@@ -7,7 +7,8 @@ class MyHeap
   end
   def pop
     if @size>0
-      @heap.pop
+      @size -=1
+      @heap.shift
       #TODO after pop
     else
       nil
@@ -16,16 +17,24 @@ class MyHeap
   def push(obj)
     #TODO push object into heap
     @heap<<obj
+    @size +=1
     update
   end
   def delete(obj)
     if @heap.include?(obj)
       #TODO delete object from heap
-      @heap.delete(obj) 
+      @heap.delete(obj)
+      @size -=1
     end
   end
   def update    
     @heap.sort_by! { |obj| obj.price }    
+  end
+  def empty?
+    @size<1
+  end
+  def include?(obj)
+    @heap.include?(obj)
   end
   def to_s
     result=    []
