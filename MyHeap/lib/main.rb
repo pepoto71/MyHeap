@@ -1,15 +1,16 @@
 require './MyHeap'
 require './Vertex'
+require './UGraph'
 
-h=MyHeap.new
-
-verteces=[]
-
-10.times do |i|
-  verteces<<Vertex.new(i+1)
-  verteces[i].price=rand(1000)+1 #not zero values
-  h.push(verteces[i])
+g=UGraph.new
+g.load_from("dijkstraData.txt")
+g.dijkstra(1)
+vs=[10,20,30,40,50,60,70,80,90,100]
+result=[]
+vs.each do |v|
+  result<<g.verteces[v].price
 end
-
-p h
-p h.to_s
+print "verteces :"
+p vs
+print "distance :"
+p result
