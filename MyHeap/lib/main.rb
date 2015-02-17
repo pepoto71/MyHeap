@@ -1,24 +1,15 @@
-class MyHeap
-  attr_reader :heap
-  attr_accessor :size
-  def initialize
-    @heap=[]
-    @size=0
-  end
-  def pop
-    if @size>0
-      @heap.pop
-      #TODO after pop
-    else
-      nil
-    end
-  end
-  def push(obj)
-    #TODO push object into heap
-  end
-  def delete(obj)
-    if @heap.include?(obj)
-    #TODO delete object from heap
-    end
-  end
+require './MyHeap'
+require './Vertex'
+
+h=MyHeap.new
+
+verteces=[]
+
+10.times do |i|
+  verteces<<Vertex.new(i+1)
+  verteces[i].price=rand(1000)+1 #not zero values
+  h.push(verteces[i])
 end
+
+p h
+p h.to_s
